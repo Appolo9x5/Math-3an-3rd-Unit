@@ -37,7 +37,7 @@
       font-size: 1.15rem;
     }
 
-    /* نافذة القفل والاشتراك الإجباري (مطابقة لدرس اللغة العربية) */
+    /* نافذة القفل والاشتراك الإجباري */
     #sub-lock-screen {
       position: fixed;
       top: 0;
@@ -148,7 +148,7 @@
       position: fixed;
       top: 85px;
       left: 10px;
-      width: 450px; /* 15 سم * 30 بكسل */
+      width: 450px;
       background: rgba(255, 249, 196, 0.98);
       border: 2px solid #fbc02d;
       border-top: 3px solid #d32f2f;
@@ -159,7 +159,7 @@
       -webkit-user-select: none;
       touch-action: none;
       transform-origin: 0px 0px;
-      direction: ltr; /* من اليسار إلى اليمين */
+      direction: ltr;
       pointer-events: auto;
     }
 
@@ -174,7 +174,7 @@
     }
 
     .ruler-unit {
-      width: 30px; /* 1 سم = 30 بكسل */
+      width: 30px;
       height: 100%;
       border-right: 1.5px solid #263238;
       position: relative;
@@ -458,7 +458,7 @@
       <div class="lock-desc">
         لِفَتْحِ الدَّرْسِ وَمُتَابَعَةِ الْأَنْشِطَةِ التَّفَاعُلِيَّةِ، يُرْجَى الِانْضِمَامُ إِلَى قَنَاتِنَا أَوَّلًا ثُمَّ الضَّغْطُ عَلَى تَأْكِيدِ الِاشْتِرَاكِ.
       </div>
-      <a href="https://t.me/c/3910412986" target="_blank" class="btn-channel" id="channel-link">📢 الِانْضِمَامُ إِلَى الْقَنَاةِ</a>
+      <a href="https://t.me/+h_6Zk9_72eQzNWQ0" target="_blank" class="btn-channel" id="channel-link">📢 الِانْضِمَامُ إِلَى الْقَنَاةِ</a>
       <button class="btn-check-sub" onclick="verifySubscription()">✅ تَأْكِيدُ الِاشْتِرَاكِ</button>
       <div id="sub-status-msg" class="sub-status-msg"></div>
     </div>
@@ -514,27 +514,23 @@
     <h2 class="lesson-title">أَكْتَشِفُ • سِبَاقٌ لِلْوُصُولِ إِلَى السُّكَّرِ</h2>
     
     <div class="problem-box">
-      « فِي سِبَاقٍ لِلْوُصُولِ إِلَى السُّكَّرِ، تَنْطَلِقُ النَّمْلَاتُ الثَّلَاثُ مِنَ النُّقْطَةِ (A) نَحْوَ النُّقْطَةِ (B). فَتَخْتَارُ كُلُّ وَاحِدَةٍ مِنْهَا طَرِيقًا كَمَا هُوَ مُبَيَّنٌ فِي الرَّسْمِ. اسْتَعْمِلْ مِسْطَرَتَكَ الْمُدَرَّجَةَ لِتَعْرِفَ النَّمْلَةَ الَّتِي اخْتَارَتْ أَقْصَرَ طَرِيقٍ لِتَفُوزَ بِالْجَائِزَةِ »[cite: 8]
+      « فِي سِبَاقٍ لِلْوُصُولِ إِلَى السُّكَّرِ، تَنْطَلِقُ النَّمْلَاتُ الثَّلَاثُ مِنَ النُّقْطَةِ (A) نَحْوَ النُّقْطَةِ (B). فَتَخْتَارُ كُلُّ وَاحِدَةٍ مِنْهَا طَرِيقًا كَمَا هُوَ مُبَيَّنٌ فِي الرَّسْمِ. اسْتَعْمِلْ مِسْطَرَتَكَ الْمُدَرَّجَةَ لِتَعْرِفَ النَّمْلَةَ الَّتِي اخْتَارَتْ أَقْصَرَ طَرِيقٍ لِتَفُوزَ بِالْجَائِزَةِ »
     </div>
 
     <div class="svg-canvas-box">
       <svg width="450" height="230" viewBox="0 0 450 230">
-        <!-- النقطتان على بعد 240 بكسل = 8 سم بالضبط -->
         <circle cx="50" cy="115" r="7" fill="#d32f2f"/>
         <text x="35" y="100" font-weight="900" font-size="16" fill="#d32f2f">A</text>
         
         <circle cx="290" cy="115" r="7" fill="#2e7d32"/>
         <text x="295" y="100" font-weight="900" font-size="15" fill="#2e7d32">B (السُّكَّر 🍬)</text>
 
-        <!-- الأخضر: 240 بكسل = 8 سم بالمسطرة -->
         <line x1="50" y1="115" x2="290" y2="115" stroke="#4caf50" stroke-width="6" stroke-linecap="round"/>
         <text x="130" y="105" font-weight="900" font-size="13" fill="#2e7d32">الْمَسَارُ الْأَخْضَرُ (مُسْتَقِيمٌ)</text>
 
-        <!-- البنفسجي: 3 قطع مجموعها 330 بكسل = 11 سم تماماً -->
         <polyline points="50,115 154,55 245,108 290,115" fill="none" stroke="#ab47bc" stroke-width="6" stroke-linecap="round"/>
         <text x="110" y="45" font-weight="900" font-size="13" fill="#7b1fa2">الْمَسَارُ الْبَنَفْسَجِيُّ</text>
 
-        <!-- البرتقالي: 4 قطع مجموعها 420 بكسل = 14 سم تماماً -->
         <polyline points="50,115 124,189 198,115 272,41 290,115" fill="none" stroke="#ffa726" stroke-width="6" stroke-linecap="round"/>
         <text x="190" y="215" font-weight="900" font-size="13" fill="#e65100">الْمَسَارُ الْبُرْتُقَالِيُّ</text>
       </svg>
@@ -590,7 +586,7 @@
     <div style="text-align:center; font-size:1.3rem; margin:15px 0;">
       (الْأَطْوَلُ) <span class="drop-zone" onclick="fillZone(this, 'ex-p14')" data-ans="الْمَسَارُ الْبُرْتُقَالِيُّ"></span>
       &gt; <span class="drop-zone" onclick="fillZone(this, 'ex-p14')" data-ans="الْمَسَارُ الْبَنَفْسَجِيُّ"></span>
-      &gt; <span class="drop-zone" onclick="fillZone(this, 'ex-p14')" data-ans="الْمَسَارُ الْأَخْضَرُ"></span> (الْأَقْصَرُ)[cite: 8]
+      &gt; <span class="drop-zone" onclick="fillZone(this, 'ex-p14')" data-ans="الْمَسَارُ الْأَخْضَرُ"></span> (الْأَقْصَرُ)
     </div>
 
     <div class="eval-badge">
@@ -605,16 +601,14 @@
     <h2 class="lesson-title">أُنْجِزُ • مُقَارَنَةُ قِطْعَةِ مُسْتَقِيمٍ وَخَطٍّ مُنْكَسِرٍ</h2>
 
     <div class="problem-box">
-      « اسْتَعْمِلِ الْمِسْطَرَةَ الرَّقْمِيَّةَ لِقِيَاسِ طُولِ هَذِهِ الْقِطَعِ وَتَرْتِيبِهَا مِنَ الْأَقْصَرِ إِلَى الْأَطْوَلِ لِنَعْرِفَ أَيُّهَا أَكْثَرُ طُولًا »[cite: 8]
+      « اسْتَعْمِلِ الْمِسْطَرَةَ الرَّقْمِيَّةَ لِقِيَاسِ طُولِ هَذِهِ الْقِطَعِ وَتَرْتِيبِهَا مِنَ الْأَقْصَرِ إِلَى الْأَطْوَلِ لِنَعْرِفَ أَيُّهَا أَكْثَرُ طُولًا »
     </div>
 
     <div class="svg-canvas-box">
       <svg width="380" height="160" viewBox="0 0 380 160">
-        <!-- A = 6 سم = 180 بكسل -->
         <text x="20" y="45" font-weight="900" font-size="16" fill="#0288d1">الْخَطُّ ( A ) :</text>
         <line x1="120" y1="40" x2="300" y2="40" stroke="#0288d1" stroke-width="6" stroke-linecap="round"/>
 
-        <!-- B = 3 قطع أطوالها 90 بكسل كل واحدة = 9 سم تماماً -->
         <text x="20" y="115" font-weight="900" font-size="16" fill="#d32f2f">الْخَطُّ ( B ) :</text>
         <polyline points="70,120 148,75 226,120 304,75" fill="none" stroke="#d32f2f" stroke-width="6" stroke-linecap="round"/>
       </svg>
@@ -663,7 +657,7 @@
 
     <div class="problem-box">
       « 1) اسْتَعْمِلِ الْمِسْطَرَةَ لِقِيَاسِ أَطْوَالِ الْقِطَعِ a , b , c »<br>
-      « 2) رَتِّبْ قِطَعَ الْمُسْتَقِيمِ a , b , c مِنَ الْأَكْبَرِ إِلَى الْأَصْغَرِ »[cite: 8]
+      « 2) رَتِّبْ قِطَعَ الْمُسْتَقِيمِ a , b , c مِنَ الْأَكْبَرِ إِلَى الْأَصْغَرِ »
     </div>
 
     <div class="svg-canvas-box">
@@ -700,81 +694,3 @@
 
     <div class="question-row">
       <span class="question-title">• طُولُ قِطْعَةِ الْمُسْتَقِيمِ ( c ) بِالْمِسْطَرَةِ هُوَ :</span>
-      <div>
-        <button class="big-btn" onclick="checkBtn(this, true, 'ex-act1')">3 سنتيمتر</button>
-        <button class="big-btn" onclick="checkBtn(this, false, 'ex-act1')">5 سنتيمتر</button>
-        <button class="big-btn" onclick="checkBtn(this, false, 'ex-act1')">7 سنتيمتر</button>
-      </div>
-    </div>
-
-    <hr style="margin:20px 0; border:0; border-top:2px dashed #b3e5fc;">
-
-    <p class="instruction">2. رَتِّبِ الْقِطَعَ مِنَ الْأَكْبَرِ إِلَى الْأَصْغَرِ :</p>
-    <div style="text-align:center;">
-      <span class="word-chip" onclick="selectChip(this)" data-val="( b )">( b )</span>
-      <span class="word-chip" onclick="selectChip(this)" data-val="( c )">( c )</span>
-      <span class="word-chip" onclick="selectChip(this)" data-val="( a )">( a )</span>
-    </div>
-    <div style="text-align:center; font-size:1.35rem; margin:15px 0;">
-      (الْأَكْبَرُ) <span class="drop-zone" onclick="fillZone(this, 'ex-act1')" data-ans="( b )"></span>
-      &gt; <span class="drop-zone" onclick="fillZone(this, 'ex-act1')" data-ans="( a )"></span>
-      &gt; <span class="drop-zone" onclick="fillZone(this, 'ex-act1')" data-ans="( c )"></span> (الْأَصْغَرُ)[cite: 8]
-    </div>
-
-    <div class="eval-badge">
-      <span class="text-success">صحيحة: <span id="ex-act1-c">0</span></span>
-      <span class="text-error">خاطئة: <span id="ex-act1-w">0</span></span>
-    </div>
-  </div>
-
-  <!-- البطاقة 4: دفتر الأنشطة ص 8 (أتمرن 2) -->
-  <div class="lesson-card">
-    <span class="page-badge">دَفْتَرُ الأَنْشِطَةِ - صَفْحَةُ 8</span>
-    <h2 class="lesson-title">أَتَمَرَّنُ (2) • أُحِيطُ الْقِطَعَ الْمُتَقَايِسَةَ بِنَفْسِ اللَّوْنِ</h2>
-    
-    <div class="problem-box">
-      « اسْتَعْمِلِ الْمِسْطَرَةَ لِقِيَاسِ الْقِطَعِ الْأَرْبَعِ، ثُمَّ انْقُرْ عَلَى الْقِطْعَتَيْنِ الْمُتَقَايِسَتَيْنِ (لَهُمَا نَفْسُ الطُّولِ تَمَامًا) »[cite: 8]
-    </div>
-
-    <!-- 1 و 3 = 180 بكسل (6 سم) تماماً -->
-    <div id="box-act2-paired-lines">
-      <div class="interactive-line-box" onclick="togglePair(this)" data-id="p1">
-        <span style="font-weight:900;">الْقِطْعَةُ ( 1 )</span>
-        <svg width="220" height="24"><line x1="10" y1="12" x2="190" y2="12" stroke="#e91e63" stroke-width="6" stroke-linecap="round"/></svg>
-      </div>
-      <div class="interactive-line-box" onclick="togglePair(this)" data-id="p2">
-        <span style="font-weight:900;">الْقِطْعَةُ ( 2 )</span>
-        <svg width="220" height="24"><line x1="10" y1="12" x2="130" y2="12" stroke="#00acc1" stroke-width="6" stroke-linecap="round"/></svg>
-      </div>
-      <div class="interactive-line-box" onclick="togglePair(this)" data-id="p3">
-        <span style="font-weight:900;">الْقِطْعَةُ ( 3 )</span>
-        <svg width="220" height="24"><line x1="10" y1="12" x2="190" y2="12" stroke="#e91e63" stroke-width="6" stroke-linecap="round"/></svg>
-      </div>
-      <div class="interactive-line-box" onclick="togglePair(this)" data-id="p4">
-        <span style="font-weight:900;">الْقِطْعَةُ ( 4 )</span>
-        <svg width="220" height="24"><line x1="10" y1="12" x2="160" y2="12" stroke="#ffb300" stroke-width="6" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-
-    <button class="big-btn" id="btn-validate-paired" onclick="validatePairedLines()" style="margin-top:14px; background:#e1f5fe; border-color:#0288d1; color:#01579b;">
-      تَأْكِيدُ التَّقَايُسِ ✔[cite: 8]
-    </button>
-
-    <div class="eval-badge">
-      <span class="text-success">صحيحة: <span id="ex-act2-c">0</span></span>
-      <span class="text-error">خاطئة: <span id="ex-act2-w">0</span></span>
-    </div>
-  </div>
-
-  <!-- البطاقة 5: دفتر الأنشطة ص 8 (أتمرن 3) -->
-  <div class="lesson-card">
-    <span class="page-badge">دَفْتَرُ الأَنْشِطَةِ - صَفْحَةُ 8</span>
-    <h2 class="lesson-title">أَتَمَرَّنُ (3) • قِيَاسُ مَسَالِكِ النَّمْلَةِ لِلْوُصُولِ إِلَى الْحَبِّ</h2>
-
-    <div class="problem-box">
-      « بِاسْتِعْمَالِ مِسْطَرَتِكَ الْمُدَرَّجَةِ، عَيِّنْ طُولَ أَقْصَرِ مَسْلَكٍ لِلنَّمْلَةِ لِلْوُصُولِ إِلَى الْحَبِّ »[cite: 8]
-    </div>
-
-    <div class="svg-canvas-box">
-      <svg width="360" height="200" viewBox="0 0 360 200">
-        <circle cx="40
