@@ -956,4 +956,243 @@
       { id: 'w2_89', ok: ['تسعه وثمانون', 'تسعة وثمانون'] },
       { id: 'w2_57', ok: ['سبعه وخمسون', 'سبعة وخمسون'] },
       { id: 'n2_83', val: 83 },
-      { id: 'n2_
+      { id: 'n2_76', val: 76 },
+      { id: 'n2_67', val: 67 },
+      { id: 'n2_94', val: 94 }
+    ];
+    checks.forEach(item => {
+      const el = document.getElementById(item.id);
+      let passed = item.ok ? item.ok.includes(normalizeArabic(el.value)) : (parseInt(el.value) === item.val);
+      markField(item.id, passed);
+      if (passed) c++; else w++;
+    });
+    showPartial('fb5', c, w);
+    unlockNext('step6', 'btn5');
+  }
+
+  // 6. فحص أتمرن 1 و 2 دفتر الأنشطة ص 6
+  function validateStep6() {
+    let c = 0, w = 0;
+    const checks = [
+      { id: 'act1_60', val: 60 },
+      { id: 'act1_74', val: 74 },
+      { id: 'act1_81', val: 81 },
+      { id: 'act2_54', ok: ['اربعه وخمسون', 'اربعة وخمسون', 'اربعه و خمسون'] },
+      { id: 'act2_92', ok: ['اثنان وتسعون', 'اثنان و تسعون'] },
+      { id: 'act2_36', ok: ['سته وثلاثون', 'ستة وثلاثون', 'سته و ثلاثون'] }
+    ];
+    checks.forEach(item => {
+      const el = document.getElementById(item.id);
+      let passed = item.ok ? item.ok.includes(normalizeArabic(el.value)) : (parseInt(el.value) === item.val);
+      markField(item.id, passed);
+      if (passed) c++; else w++;
+    });
+    showPartial('fb6', c, w);
+    unlockNext('step7', 'btn6');
+  }
+
+  // 7. فحص أتمرن 3 و 4 المراتب والترتيب دفتر الأنشطة ص 6
+  function validateStep7() {
+    let c = 0, w = 0;
+    const checks = [
+      { id: 'p_u', val: 2 },
+      { id: 'p_t', val: 9 },
+      { id: 'p_tot', val: 92 },
+      { id: 'ord_1', val: 36 },
+      { id: 'ord_2', val: 63 },
+      { id: 'ord_3', val: 65 },
+      { id: 'ord_4', val: 80 }
+    ];
+    checks.forEach(item => {
+      const el = document.getElementById(item.id);
+      const passed = (parseInt(el.value) === item.val);
+      markField(item.id, passed);
+      if (passed) c++; else w++;
+    });
+    showPartial('fb7', c, w);
+    unlockNext('step8', 'btn7');
+  }
+
+  // 8. فحص أتمرن 5 التفكيك الجمعي دفتر الأنشطة ص 6
+  function validateStep8() {
+    let c = 0, w = 0;
+    const checks = [
+      { id: 'dec_62_t', val: 60 }, { id: 'dec_62_u', val: 2 },
+      { id: 'dec_78_t', val: 70 }, { id: 'dec_78_u', val: 8 },
+      { id: 'dec_44_t', val: 40 }, { id: 'dec_44_u', val: 4 },
+      { id: 'dec_91_t', val: 90 }, { id: 'dec_91_u', val: 1 }
+    ];
+    checks.forEach(item => {
+      const el = document.getElementById(item.id);
+      const passed = (parseInt(el.value) === item.val);
+      markField(item.id, passed);
+      if (passed) c++; else w++;
+    });
+    showPartial('fb8', c, w);
+    unlockNext('step9', 'btn8');
+  }
+
+  // 9. فحص أتمرن 6 القطع النقدية دفتر الأنشطة ص 6
+  function clickCoin(el) {
+    if (el.dataset.locked === "true") return;
+    el.classList.toggle('struck');
+    playTone(400, 'sine', 0.05);
+    updateCoinsStats();
+  }
+
+  function updateCoinsStats() {
+    const struckList = document.querySelectorAll('.coin.struck');
+    let sum = 0;
+    struckList.forEach(c => sum += parseInt(c.getAttribute('data-val')));
+    document.getElementById('currentWalletSum').innerText = sum;
+    document.getElementById('currentWalletCount').innerText = struckList.length;
+  }
+
+  function validateStep9() {
+    const coins = document.querySelectorAll('.coin');
+    coins.forEach(c => c.dataset.locked = "true");
+
+    const struck = document.querySelectorAll('.coin.struck');
+    let sum = 0;
+    let counts = { 50: 0, 20: 0, 10: 0, 5: 0 };
+    struck.forEach(c => {
+      const val = parseInt(c.getAttribute('data-val'));
+      sum += val;
+      counts[val]++;
+    });
+
+    const isOptimal = (sum === 95 && counts[50] === 1 && counts[20] === 2 && counts[5] === 1 && counts[10] === 0);
+    const fb = document.getElementById('fb9');
+    fb.style.display = 'block';
+
+    if (isOptimal) {
+      fb.style.background = 'var(--correct-bg)';
+      fb.style.color = 'var(--correct)';
+      fb.innerText = 'أحسنت! دفعت 95 دج بأقل عدد ممكن: 4 قطع (50 + 20 + 20 + 5).';
+      totalCorrect++;
+      showPartial('fb9', 1, 0);
+    } else {
+      fb.style.background = 'var(--wrong-bg)';
+      fb.style.color = 'var(--wrong)';
+      fb.innerText = 'إجابة غير مطابقة للشرط (المطلوب دفع 95 دج بأقل عدد ممكن: 50 + 20 + 20 + 5).';
+      totalWrong++;
+      showPartial('fb9', 0, 1);
+    }
+
+    unlockNext('step10', 'btn9');
+  }
+
+  // 10. فحص أبحث: البطاقات 1 ، 0 ، 9
+  function validateStep10() {
+    const valid = [10, 19, 90, 91];
+    const inputs = ['b1','b2','b3','b4'];
+    let c = 0, w = 0, seen = [];
+    inputs.forEach(id => {
+      const el = document.getElementById(id);
+      const val = parseInt(el.value);
+      let isOk = (!isNaN(val) && valid.includes(val) && !seen.includes(val));
+      if (isOk) {
+        seen.push(val);
+        markField(id, true);
+        c++;
+      } else {
+        markField(id, false);
+        w++;
+      }
+    });
+    showPartial('fb10', c, w);
+    unlockNext(null, 'btn10');
+    renderFinalReport();
+  }
+
+  // التقرير النهائي الشامل
+  function renderFinalReport() {
+    const rep = document.getElementById('finalReport');
+    rep.style.display = 'block';
+    rep.scrollIntoView({ behavior: 'smooth' });
+
+    const totalQuestions = totalCorrect + totalWrong;
+    const percentage = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+
+    document.getElementById('repTotal').innerText = totalQuestions;
+    document.getElementById('repCorrect').innerText = totalCorrect;
+    document.getElementById('repWrong').innerText = totalWrong;
+
+    const circle = document.getElementById('circleProg');
+    const circleText = document.getElementById('circleText');
+    const circumference = 2 * Math.PI * 70;
+    const offset = circumference - (percentage / 100) * circumference;
+
+    let strokeColor = '#dc2626';
+    if (percentage >= 85) strokeColor = '#16a34a';
+    else if (percentage >= 65) strokeColor = '#f59e0b';
+
+    circle.style.stroke = strokeColor;
+    circleText.style.color = strokeColor;
+    circleText.innerText = `${percentage}%`;
+    setTimeout(() => {
+      circle.style.strokeDashoffset = offset;
+    }, 100);
+
+    const gradeDiv = document.getElementById('repGrade');
+    if (percentage >= 85) {
+      gradeDiv.style.background = '#dcfce7';
+      gradeDiv.style.color = '#15803d';
+      gradeDiv.innerText = 'ملاحظة التقدير: ممتاز! تحصيل بيداغوجي رفيع واستيعاب كامل ومتقن لكفاءات الدرس.';
+      setTimeout(soundFanfare, 400);
+    } else if (percentage >= 65) {
+      gradeDiv.style.background = '#fef3c7';
+      gradeDiv.style.color = '#b45309';
+      gradeDiv.innerText = 'ملاحظة التقدير: جيد! توجد بعض الأخطاء الحسابية أو الإملائية التي تم تظليلها بالأحمر للمراجعة.';
+      setTimeout(soundSuccess, 400);
+    } else {
+      gradeDiv.style.background = '#fee2e2';
+      gradeDiv.style.color = '#b91c1c';
+      gradeDiv.innerText = 'ملاحظة التقدير: يحتاج إلى دعم ومرافقة! يرجى من الولي مراجعة الخانات والأرقام الملونة بالأحمر مع التلميذ.';
+      setTimeout(soundError, 400);
+    }
+  }
+
+  function resetEntireSession() {
+    totalCorrect = 0;
+    totalWrong = 0;
+
+    document.querySelectorAll('input').forEach(inp => {
+      inp.value = '';
+      inp.disabled = false;
+      inp.className = '';
+    });
+
+    document.querySelectorAll('.partial-feedback').forEach(f => {
+      f.style.display = 'none';
+      f.innerHTML = '';
+    });
+
+    document.querySelectorAll('.btn-submit').forEach(btn => btn.disabled = false);
+
+    document.querySelectorAll('.coin').forEach(c => {
+      c.classList.remove('struck');
+      delete c.dataset.locked;
+    });
+    updateCoinsStats();
+
+    for(let i = 2; i <= 10; i++) {
+      document.getElementById(`step${i}`).classList.add('disabled-step');
+    }
+    document.getElementById('step1').classList.remove('disabled-step');
+
+    document.getElementById('finalReport').style.display = 'none';
+    const circle = document.getElementById('circleProg');
+    circle.style.strokeDashoffset = 440;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.onload = function() {
+    verifySubscription();
+    renderGrid();
+  };
+</script>
+
+</body>
+</html>
